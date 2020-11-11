@@ -1,5 +1,8 @@
 package WorkersData;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class Branch extends Company{
     private String branch;
     Branch(String name, String branch) {
@@ -17,5 +20,29 @@ public class Branch extends Company{
 
     public void setBranch(String branch) {
         this.branch = branch;
+    }
+
+    public static void showBranches(List<Project> list, int companyId){
+        String company = list.get(companyId).getName();
+        for (Project m : list)
+        {
+            if(m.getName().equals(company) && m.getBranch() != null && m.getDepartment() == null){
+                System.out.println(m.getCompanyId()+". "+m.getName()+", "+m.getBranch());
+            }
+        }
+    }
+    public static void searchBranch(List<Project> list, String name, int companyId){
+        String company = list.get(companyId).getName();
+        for (Project m : list)
+            if(m.getBranch() != null && m.getDepartment() == null && m.getName().equals(company) && m.getBranch().contains(name))
+                System.out.println(m.getCompanyId()+". "+m.getName()+", "+m.getBranch());
+    }
+    public static void addBranch(List<Project> list, int companyId){
+        Scanner console2 = new Scanner(System.in);
+        String company = list.get(companyId).getName();
+        list.add(new Project(company, console2.nextLine()));
+    }
+    public static void removeBranch(List<Project> list, int companyId){
+        list.remove(companyId);// powinny być usuwane wszystkie po nazwie
     }
 }

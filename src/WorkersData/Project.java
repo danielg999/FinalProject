@@ -1,5 +1,7 @@
 package WorkersData;
 
+import java.util.List;
+
 public class Project extends Worker{
     private String project;
     Project(String name, String branch, String department, String worker, String project) {
@@ -26,4 +28,5 @@ public class Project extends Worker{
     public void setProject(String project) {
         this.project = project;
     }
+
 }
