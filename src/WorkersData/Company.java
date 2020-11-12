@@ -2,14 +2,14 @@ package WorkersData;
 
 import java.util.List;
 
-public class Company<T extends Comparable<T>> extends General{
-    static int companyAmount = 0;
-    private int companyId;
+public class Company<T extends Comparable<T>> extends General implements IncrementCompanyId{
+    private static int companyAmount = 0;
+    private  int companyId;
     private String name;
 
     Company(String name) {
-        companyAmount++;
-        this.setCompanyId();
+        //companyAmount++;
+        //this.setCompanyId();
         this.name = name;
     }
 
@@ -45,8 +45,10 @@ public class Company<T extends Comparable<T>> extends General{
         for(Project item : list)
             if(item.getName().contains(company))
                 flag = 1;
-        if(flag == 0)
+        if(flag == 0){
             list.add(new Project(company));
+        }
+
         else
             System.out.println("Podana firma już istnieje");
     }
@@ -62,5 +64,11 @@ public class Company<T extends Comparable<T>> extends General{
         for (Project m : list)
             if(m.getName().contains(name) && m.getBranch() == null)
                 System.out.println(m.getCompanyId()+". "+m.getName());
+    }
+
+    @Override
+    public void IncrementCompanyId() {
+        this.companyAmount++;
+        this.setCompanyId();
     }
 }

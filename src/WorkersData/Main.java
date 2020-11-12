@@ -25,9 +25,8 @@ public class Main {
         companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", "pracownik"));
         companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", "pracownik", "projekt"));
         //showCompanies(companies5);
-        String choice;
         Integer companyId, branchId, departmentId;
-        Integer choice2;
+        Integer choice, choice2;
         do{
             System.out.println("MENU FIRM\n-------------------------");
             System.out.println("1) Pokaż firmy");
@@ -36,26 +35,26 @@ public class Main {
             System.out.println("4) Znajdź firmę po nazwie");
             System.out.println("5) Zarządzaj firmą");
             System.out.println("6) Zakończ");
-            choice = console.nextLine();
+            choice = Integer.parseInt(console.nextLine());
             switch(choice){
-                case "1":
+                case 1:
                     Company.showCompanies(companies);
                     break;
-                case "2":
+                case 2:
 
                     Company.addCompany(companies, console.nextLine());
                     //companies.add(new Company("Druga"));
                     break;
-                case "3":
+                case 3:
                     System.out.print("Podaj indentyfikator firmy: ");
                     Company.removeCompany(companies, Integer.parseInt(console.nextLine())-1);
 
                     break;
-                case "4":
+                case 4:
                     System.out.print("Podaj nazwę: ");
                     Company.searchCompany(companies, console.nextLine());
                     break;
-                case "5":
+                case 5:
                     System.out.print("Podaj identyfikator firmy: ");
                     companyId = Integer.parseInt(console.nextLine());
                     do{
@@ -154,11 +153,11 @@ public class Main {
                     }while(!choice2.equals(6));
 
                     break;
-                case "6":
+                case 6:
                     System.out.println("Do widzenia");
                     break;
             }
-        } while(!choice.equals("6"));
+        } while(!choice.equals(6));
     }
 }
 //Prawdopodobnie będzie zawsze dodawanie jednego elementu z klasy (głównego), a jak usuwanie to wszystkiego

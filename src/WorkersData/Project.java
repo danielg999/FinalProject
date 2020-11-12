@@ -2,7 +2,7 @@ package WorkersData;
 
 import java.util.List;
 
-public class Project extends Worker{
+public class Project extends Worker implements IncrementCompanyId{
     private String project;
     Project(String name, String branch, String department, String worker, String project) {
         super(name, branch, department, worker);
@@ -19,6 +19,11 @@ public class Project extends Worker{
     }
     Project(String name) {
         super(name);
+        if(this.getBranch() == null){
+            System.out.println(getCompanyId());
+            IncrementCompanyId();
+            System.out.println(getCompanyId());
+        }
     }
 
     public String getProject() {
@@ -29,4 +34,8 @@ public class Project extends Worker{
         this.project = project;
     }
 
+    @Override
+    public void IncrementBranchId() {
+
+    }
 }
