@@ -7,19 +7,19 @@ public class Worker extends Department{
     public static int workerAmount = 0;
     private int workerId;
     private String worker;
-    Worker(String name, String branch, String department, int workerId, String worker) {
-        super(name, branch, department);
+    Worker(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+        super(companyId, name, branchId, branch, departmentId, department);
         this.workerId = workerId;
         this.worker = worker;
     }
-    Worker(String name, String branch, String department) {
-        super(name, branch, department);
+    Worker(int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(companyId, name, branchId, branch, departmentId, department);
     }
-    Worker(String name, String branch) {
-        super(name, branch);
+    Worker(int companyId, String name, int branchId, String branch) {
+        super(companyId, name, branchId, branch);
     }
-    Worker(String name) {
-        super(name);
+    Worker(int companyId, String name) {
+        super(companyId, name);
     }
 
     public String getWorker() {
@@ -46,7 +46,7 @@ public class Worker extends Department{
         String company = list.get(companyId).getName();
         String branch = list.get(branchId).getBranch();
         String department = list.get(departmentId).getDepartment();
-        list.add(new Project(company, branch, department, Worker.workerAmount, console2.nextLine()));
+        list.add(new Project(companyId, company, Branch.branchAmount, branch, Department.departmentAmount, department, Worker.workerAmount, console2.nextLine()));
     }
 
     public void setWorkerId(int workerId) {

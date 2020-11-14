@@ -4,16 +4,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Department extends Branch{
+    public static int departmentAmount = 0;
+    private int departmentId;
     private String department;
-    Department(String name, String branch, String department) {
-        super(name, branch);
+    Department(int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(companyId, name, branchId, branch);
+        this.departmentId = departmentId;
         this.department = department;
     }
-    Department(String name, String branch) {
-        super(name, branch);
+    Department(int companyId, String name, int branchId, String branch) {
+        super(companyId, name, branchId, branch);
     }
-    Department(String name) {
-        super(name);
+    Department(int companyId, String name) {
+        super(companyId, name);
     }
 
     public String getDepartment() {
@@ -30,7 +33,7 @@ public class Department extends Branch{
         for (Project m : list)
         {
             if(m.getBranch() != null && m.getDepartment() != null && m.getName().equals(company) && m.getBranch().equals(branch) && m.getWorker() == null){
-                System.out.println(m.getCompanyId()+". "+m.getName()+", "+m.getBranch()+", "+m.getDepartment());
+                System.out.println(m.getDepartmentId()+". "+m.getName()+", "+m.getBranch()+", "+m.getDepartment());
             }
         }
     }
@@ -39,6 +42,15 @@ public class Department extends Branch{
         Scanner console2 = new Scanner(System.in);
         String company = list.get(companyId).getName();
         String branch = list.get(branchId).getBranch();
-        list.add(new Project(company, branch, console2.nextLine()));
+        list.add(new Project(companyId, company, Branch.branchAmount, branch, Department.departmentAmount, console2.nextLine()));
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        departmentAmount = departmentId;
+        this.departmentId = departmentAmount;
     }
 }

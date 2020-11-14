@@ -6,32 +6,37 @@ public class Project extends Worker{
     public static int projectAmount = 0;
     private String project;
     private int projectId;
-    Project(String name, String branch, String department, int workerId, String worker, int projectId, String project) {
-        super(name, branch, department, workerId, worker);
+    Project(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, int projectId, String project) {
+        super(companyId, name, branchId, branch, departmentId, department, workerId, worker);
         this.project = project;
         this.projectId = projectId;
     }
-    Project(String name, String branch, String department, int workerId, String worker) {
-        super(name, branch, department, workerId, worker);
+    Project(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+        super(companyId, name, branchId, branch, departmentId, department, workerId, worker);
         if(this.getProject() == null){
-            System.out.println(getWorkerId());
+            //System.out.println(getWorkerId());
             IncrementWorkerId();
-            System.out.println(getWorkerId());
+            //System.out.println(getWorkerId());
         }
     }
-    Project(String name, String branch, String department) {
-        super(name, branch, department);
+    Project(int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(companyId, name, branchId, branch, departmentId, department);
+        if(this.getWorker() == null){
+            //System.out.println(getDepartmentId());
+            IncrementDepartmentId();
+            //System.out.println(getDepartmentId());
+        }
     }
-    Project(String name, String branch) {
-        super(name, branch);
+    Project(int companyId, String name, int branchId, String branch) {
+        super(companyId, name, branchId, branch);
         if(this.getDepartment() == null){
-            //System.out.println(getDepartment());
+            System.out.println(getBranchId());
             IncrementBranchId();
-            //System.out.println(getCompanyId());
+            System.out.println(getBranchId());
         }
     }
-    Project(String name) {
-        super(name);
+    Project(int companyId, String name) {
+        super(companyId, name);
         if(this.getBranch() == null){
             //System.out.println(getCompanyId());
             IncrementCompanyId();
@@ -59,6 +64,9 @@ public class Project extends Worker{
     }
     public void IncrementWorkerId() {
         this.setWorkerId(workerAmount+1);
+    }
+    public void IncrementDepartmentId() {
+        this.setDepartmentId(departmentAmount+1);
     }
     public void setProjectId(int projectId) {
         projectAmount = projectId;

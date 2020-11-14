@@ -1,5 +1,7 @@
 package WorkersData;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Company<T extends Comparable<T>> extends General{
@@ -7,9 +9,10 @@ public class Company<T extends Comparable<T>> extends General{
     private  int companyId;
     private String name;
 
-    Company(String name) {
+    Company(int companyId, String name) {
         //companyAmount++;
         //this.setCompanyId();
+        this.companyId = companyId;
         this.name = name;
     }
 
@@ -44,18 +47,28 @@ public class Company<T extends Comparable<T>> extends General{
             if(item.getName().contains(company))
                 flag = 1;
         if(flag == 0){
-            list.add(new Project(company));
+            list.add(new Project(Company.companyAmount, company));
         }
 
         else
             System.out.println("Podana firma już istnieje");
     }
     public static void removeCompany(List<Project> list, int id){
-        if(list.get(id).getBranch() == null)
-            list.remove(id);
-        else
+        List<Integer> indexesToRemove = new ArrayList<Integer>();
+        //System.out.println(list.size());
+        for(int index=0; index<list.size(); index++){
+            if(list.get(index).getCompanyId() == id){
+                indexesToRemove.add(index);
+            }
+        }
+        if(indexesToRemove.size() == 0){
             System.out.println("Podany identyfikator nie zawiera firmy");
-        // powinny być usuwane wszystkie po nazwie
+        }
+        for(Integer index : indexesToRemove){
+            System.out.println(list.get(index).getCompanyId()+", "+index);
+            list.remove((int)index);
+        }
+        indexesToRemove.clear();
     }
 
     public static void searchCompany(List<Project> list, String name){

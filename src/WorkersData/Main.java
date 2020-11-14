@@ -17,13 +17,13 @@ public class Main {
 //        List<Project> companies5 = new ArrayList<Project>();
 
 
-        companies.add(new Project("xxx"));
-        companies.add(new Project("xxx", "dsd2"));
-        companies.add(new Project("nazwaFirmy"));
-        companies.add(new Project("nazwaFirmy", "oddzial"));
-        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial"));
-        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", Worker.workerAmount,"pracownik"));
-        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
+        companies.add(new Project(Company.companyAmount, "xxx"));
+        companies.add(new Project(Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
+        companies.add(new Project(Company.companyAmount, "nazwaFirmy"));
+        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
+        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
+        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
+        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId;
         Integer choice, choice2;
@@ -47,7 +47,7 @@ public class Main {
                     break;
                 case 3:
                     System.out.print("Podaj indentyfikator firmy: ");
-                    Company.removeCompany(companies, Integer.parseInt(console.nextLine())-1);
+                    Company.removeCompany(companies, Integer.parseInt(console.nextLine()));
 
                     break;
                 case 4:
@@ -75,7 +75,7 @@ public class Main {
                                 break;
                             case 3:
                                 System.out.print("Podaj indentyfikator oddziału: ");
-                                Branch.removeBranch(companies, Integer.parseInt(console.nextLine())-1);
+                                Branch.removeBranch(companies, Integer.parseInt(console.nextLine()));
                                 break;
                             case 4:
                                 System.out.print("Podaj nazwę: ");
