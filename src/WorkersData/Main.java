@@ -22,8 +22,8 @@ public class Main {
         companies.add(new Project("nazwaFirmy"));
         companies.add(new Project("nazwaFirmy", "oddzial"));
         companies.add(new Project("nazwaFirmy", "oddzial", "Dzial"));
-        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", "pracownik"));
-        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", "pracownik", "projekt"));
+        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", Worker.workerAmount,"pracownik"));
+        companies.add(new Project("nazwaFirmy", "oddzial", "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId;
         Integer choice, choice2;

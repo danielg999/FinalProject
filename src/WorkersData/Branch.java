@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class Branch extends Company{
     private String branch;
+    public static int branchAmount = 0;
+    private int branchId;
     Branch(String name, String branch) {
         super(name);
         this.branch = branch;
@@ -44,5 +46,14 @@ public class Branch extends Company{
     }
     public static void removeBranch(List<Project> list, int companyId){
         list.remove(companyId);// powinny być usuwane wszystkie po nazwie
+    }
+
+    public void setBranchId(int branchId) {
+        branchAmount = branchId;
+        this.branchId = branchAmount;
+    }
+
+    public int getBranchId() {
+        return branchId;
     }
 }

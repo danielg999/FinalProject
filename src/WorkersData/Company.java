@@ -2,8 +2,8 @@ package WorkersData;
 
 import java.util.List;
 
-public class Company<T extends Comparable<T>> extends General implements IncrementCompanyId{
-    private static int companyAmount = 0;
+public class Company<T extends Comparable<T>> extends General{
+    public static int companyAmount = 0;
     private  int companyId;
     private String name;
 
@@ -22,16 +22,14 @@ public class Company<T extends Comparable<T>> extends General implements Increme
     }
 
     public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+        companyAmount = companyId;
+        this.companyId = companyAmount;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    private void setCompanyId(){
-        this.companyId = companyAmount;
-    }
 
     public static void showCompanies(List<Project> list){
         for (Project m : list)
@@ -64,11 +62,5 @@ public class Company<T extends Comparable<T>> extends General implements Increme
         for (Project m : list)
             if(m.getName().contains(name) && m.getBranch() == null)
                 System.out.println(m.getCompanyId()+". "+m.getName());
-    }
-
-    @Override
-    public void IncrementCompanyId() {
-        this.companyAmount++;
-        this.setCompanyId();
     }
 }
