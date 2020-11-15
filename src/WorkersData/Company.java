@@ -76,4 +76,9 @@ public class Company<T extends Comparable<T>> extends General{
             if(m.getName().contains(name) && m.getBranch() == null)
                 System.out.println(m.getCompanyId()+". "+m.getName());
     }
+
+    @Override
+    public void doSth() {
+
+    }
 }

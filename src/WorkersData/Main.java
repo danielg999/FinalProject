@@ -26,7 +26,7 @@ public class Main {
         companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId, workerId;
-        Integer choice, choice2;
+        Integer choice, choice2, choice3, choice4, choice5;
         do{
             System.out.println("MENU FIRM\n-------------------------");
             System.out.println("1) Pokaż firmy");
@@ -92,8 +92,8 @@ public class Main {
                                     System.out.println("4) Znajdź dział po nazwie");
                                     System.out.println("5) Zarządzaj działem");
                                     System.out.println("6) Cofnij");
-                                    choice2 = Integer.parseInt(console.nextLine());
-                                    switch(choice2){
+                                    choice3 = Integer.parseInt(console.nextLine());
+                                    switch(choice3){
                                         case 1:
                                             Department.showDepartments(companies, companyId, branchId);
                                             break;
@@ -119,8 +119,8 @@ public class Main {
                                                 System.out.println("4) Znajdź pracownika po imieniu lub nazwisku");
                                                 System.out.println("5) Zarządzaj pracownikiem");
                                                 System.out.println("6) Cofnij");
-                                                choice2 = Integer.parseInt(console.nextLine());
-                                                switch(choice2){
+                                                choice4 = Integer.parseInt(console.nextLine());
+                                                switch(choice4){
                                                     case 1:
                                                         Worker.showWorkers(companies, companyId, branchId, departmentId);
                                                         break;
@@ -138,15 +138,46 @@ public class Main {
                                                     case 5:
                                                         System.out.print("Podaj identyfikator pracownika: ");
                                                         workerId = Integer.parseInt(console.nextLine());
+                                                        do{
+                                                            System.out.println("PODMENU PROJEKTU\n-------------------------");
+                                                            System.out.println("1) Pokaż projekty pracownika");
+                                                            System.out.println("2) Dodaj projekt");
+                                                            System.out.println("3) Usuń projekt");
+                                                            System.out.println("4) Znajdź projekt");
+                                                            System.out.println("5) Zarządzaj projektem");
+                                                            System.out.println("6) Cofnij");
+                                                            choice5 = Integer.parseInt(console.nextLine());
+                                                            switch(choice5){
+                                                                case 1:
+//                                                                    Worker.showWorkers(companies, companyId, branchId, departmentId);
+                                                                    break;
+                                                                case 2:
+//                                                                    Worker.addWorker(companies, companyId, branchId, departmentId);
+                                                                    break;
+                                                                case 3:
+//                                                                    System.out.print("Podaj identyfikator pracownika: ");
+//                                                                    Worker.removeWorker(companies, Integer.parseInt(console.nextLine()));
+                                                                    break;
+                                                                case 4:
+//                                                                    System.out.print("Podaj imie lub nazwisko pracownika: ");
+//                                                                    Worker.searchWorker(companies, console.nextLine(), companyId, branchId, departmentId);
+                                                                    break;
+                                                                case 5:
+//                                                                    System.out.print("Podaj identyfikator pracownika: ");
+//                                                                    workerId = Integer.parseInt(console.nextLine());
 
+
+                                                                    break;
+                                                            }
+                                                        }while(!choice5.equals(6));
 
                                                         break;
                                                 }
-                                            }while(!choice2.equals(6));
+                                            }while(!choice4.equals(6));
 
                                             break;
                                     }
-                                }while(!choice2.equals(6));
+                                }while(!choice3.equals(6));
 
                                 break;
                         }
