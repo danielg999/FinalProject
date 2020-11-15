@@ -1,8 +1,6 @@
 package WorkersData;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Branch extends Company{
     public static int branchAmount = 0;
@@ -34,20 +32,8 @@ public class Branch extends Company{
                 System.out.println(list.get(index).getBranchId()+". "+list.get(index).getName()+", "+list.get(index).getBranch());
             }
         }
-
-//        for (Project m : list)
-//        {
-//            if(m.getName().equals(company) && m.getBranch() != null && m.getDepartment() == null){
-//                System.out.println(m.getBranchId()+". "+m.getName()+", "+m.getBranch());
-//            }
-//        }
     }
     public static void searchBranch(List<Project> list, String name, int companyId){
-//        String company = list.get(companyId).getName();
-//        for (Project m : list)
-//            if(m.getBranch() != null && m.getDepartment() == null && m.getName().equals(company) && m.getBranch().contains(name))
-//                System.out.println(m.getCompanyId()+". "+m.getName()+", "+m.getBranch());
-
         for(int index=0; index<list.size(); index++){
             if(list.get(index).getCompanyId() == companyId && list.get(index).getBranch() != null && list.get(index).getDepartment() == null && list.get(index).getBranch().contains(name)){
                 System.out.println(list.get(index).getCompanyId()+". "+list.get(index).getName()+", "+list.get(index).getBranch());
@@ -79,10 +65,13 @@ public class Branch extends Company{
         if(indexesToRemoveBranch.size() == 0) {
             System.out.println("Podany identyfikator nie zawiera oddziału");
         }
-        for(Integer index : indexesToRemoveBranch){
-            System.out.println("Index: "+index);
-            list.remove((int)index);
-            //list.remove(3);
+        Collections.sort(indexesToRemoveBranch, Collections.reverseOrder());
+        for(int index2 = 0; index2<indexesToRemoveBranch.size(); index2++){
+            System.out.println("Index: "+index2+", value: "+ indexesToRemoveBranch.get(index2));
+            list.remove((int)indexesToRemoveBranch.get(index2));
+        }
+        for(int index3=0; index3<list.size(); index3++){
+            System.out.println("List contains2: "+list.get(index3).getBranchId()+", "+index3);
         }
         indexesToRemoveBranch.clear();
     }

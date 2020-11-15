@@ -25,7 +25,7 @@ public class Main {
         companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
         companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
-        Integer companyId, branchId, departmentId;
+        Integer companyId, branchId, departmentId, workerId;
         Integer choice, choice2;
         do{
             System.out.println("MENU FIRM\n-------------------------");
@@ -46,7 +46,7 @@ public class Main {
                     //companies.add(new Company("Druga"));
                     break;
                 case 3:
-                    System.out.print("Podaj indentyfikator firmy: ");
+                    System.out.print("Podaj identyfikator firmy: ");
                     Company.removeCompany(companies, Integer.parseInt(console.nextLine()));
 
                     break;
@@ -74,7 +74,7 @@ public class Main {
                                 Branch.addBranch(companies, companyId);
                                 break;
                             case 3:
-                                System.out.print("Podaj indentyfikator oddziału: ");
+                                System.out.print("Podaj identyfikator oddziału: ");
                                 Branch.removeBranch(companies, Integer.parseInt(console.nextLine()));
                                 break;
                             case 4:
@@ -101,12 +101,12 @@ public class Main {
                                             Department.addDepartment(companies, companyId, branchId);
                                             break;
                                         case 3:
-                                            System.out.print("Podaj indentyfikator oddziału: ");
-                                            //removeDepartment(companies, Integer.parseInt(console.nextLine())-1);
+                                            System.out.print("Podaj identyfikator oddziału: ");
+                                            Department.removeDepartment(companies, Integer.parseInt(console.nextLine()));
                                             break;
                                         case 4:
                                             System.out.print("Podaj nazwę: ");
-                                            //searchDepartment(companies, console.nextLine(), companyId, branchId);
+                                            Department.searchDepartment(companies, console.nextLine(), companyId, branchId);
                                             break;
                                         case 5:
                                             System.out.print("Podaj identyfikator oddziału: ");
@@ -128,16 +128,16 @@ public class Main {
                                                         Worker.addWorker(companies, companyId, branchId, departmentId);
                                                         break;
                                                     case 3:
-                                                        System.out.print("Podaj indentyfikator oddziału: ");
-                                                        //removeDepartment(companies, Integer.parseInt(console.nextLine())-1);
+                                                        System.out.print("Podaj identyfikator pracownika: ");
+                                                        Worker.removeWorker(companies, Integer.parseInt(console.nextLine()));
                                                         break;
                                                     case 4:
-                                                        System.out.print("Podaj nazwę: ");
-                                                        //searchDepartment(companies, console.nextLine(), companyId, branchId);
+                                                        System.out.print("Podaj imie lub nazwisko pracownika: ");
+                                                        Worker.searchWorker(companies, console.nextLine(), companyId, branchId, departmentId);
                                                         break;
                                                     case 5:
-                                                        System.out.print("Podaj identyfikator oddziału: ");
-                                                        departmentId = Integer.parseInt(console.nextLine());
+                                                        System.out.print("Podaj identyfikator pracownika: ");
+                                                        workerId = Integer.parseInt(console.nextLine());
 
 
                                                         break;

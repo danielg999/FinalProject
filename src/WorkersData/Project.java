@@ -30,9 +30,9 @@ public class Project extends Worker{
     Project(int companyId, String name, int branchId, String branch) {
         super(companyId, name, branchId, branch);
         if(this.getDepartment() == null){
-            System.out.println(getBranchId());
+            //System.out.println(getBranchId());
             IncrementBranchId();
-            System.out.println(getBranchId());
+            //System.out.println(getBranchId());
         }
     }
     Project(int companyId, String name) {
