@@ -9,16 +9,16 @@ public class Department extends Branch{
     public static int departmentAmount = 0;
     private int departmentId;
     private String department;
-    Department(int companyId, String name, int branchId, String branch, int departmentId, String department) {
-        super(companyId, name, branchId, branch);
+    Department(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(counterId, companyId, name, branchId, branch);
         this.departmentId = departmentId;
         this.department = department;
     }
-    Department(int companyId, String name, int branchId, String branch) {
-        super(companyId, name, branchId, branch);
+    Department(int counterId, int companyId, String name, int branchId, String branch) {
+        super(counterId, companyId, name, branchId, branch);
     }
-    Department(int companyId, String name) {
-        super(companyId, name);
+    Department(int counterId, int companyId, String name) {
+        super(counterId, companyId, name);
     }
 
     public String getDepartment() {
@@ -55,7 +55,7 @@ public class Department extends Branch{
                 isBranchFound = true;
             }
         }
-        list.add(new Project(companyId, company, branchId, branch, Department.departmentAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), companyId, company, branchId, branch, Department.departmentAmount, console2.nextLine()));
     }
 
     public static void removeDepartment(List<Project> list, int departmentId){

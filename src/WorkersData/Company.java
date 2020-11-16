@@ -9,15 +9,23 @@ public class Company<T extends Comparable<T>> extends General{
     private  int companyId;
     private String name;
 
-    Company(int companyId, String name) {
+    Company(int counterId, int companyId, String name) {
+        super(counterId);
         //companyAmount++;
         //this.setCompanyId();
         this.companyId = companyId;
         this.name = name;
+        incrementCounter();
     }
+
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void incrementCounter() {
+        super.setCounter(super.getCounter() + 1);
     }
 
     public int getCompanyId() {
@@ -38,7 +46,7 @@ public class Company<T extends Comparable<T>> extends General{
         for (Project m : list)
         {
             if(m.getBranch() == null)
-                System.out.println(m.getCompanyId()+". "+m.getName());
+                System.out.println(m.getCounterId()+". "+m.getCompanyId()+". "+m.getName());
         }
     }
     public static void addCompany(List<Project> list, String company){
@@ -47,7 +55,7 @@ public class Company<T extends Comparable<T>> extends General{
             if(item.getName().contains(company))
                 flag = 1;
         if(flag == 0){
-            list.add(new Project(Company.companyAmount, company));
+            list.add(new Project(General.getCounter(), Company.companyAmount, company));
         }
 
         else
@@ -77,8 +85,4 @@ public class Company<T extends Comparable<T>> extends General{
                 System.out.println(m.getCompanyId()+". "+m.getName());
     }
 
-    @Override
-    public void doSth() {
-
-    }
 }

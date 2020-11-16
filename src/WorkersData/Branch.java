@@ -7,14 +7,14 @@ public class Branch extends Company{
     private int branchId;
     private String branch;
 
-    Branch(int companyId, String name, int branchId, String branch) {
-        super(companyId, name);
+    Branch(int counterId, int companyId, String name, int branchId, String branch) {
+        super(counterId, companyId, name);
         this.branchId = branchId;
         this.branch = branch;
     }
 
-    Branch(int companyId, String name) {
-        super(companyId, name);
+    Branch(int counterId, int companyId, String name) {
+        super(counterId, companyId, name);
     }
 
     public String getBranch() {
@@ -50,7 +50,7 @@ public class Branch extends Company{
                 break;
             }
         }
-        list.add(new Project(companyId, company, Branch.branchAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), companyId, company, Branch.branchAmount, console2.nextLine()));
     }
     public static void removeBranch(List<Project> list, int branchId){
         //list.remove(companyId);// powinny być usuwane wszystkie po nazwie

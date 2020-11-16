@@ -9,19 +9,19 @@ public class Worker extends Department{
     public static int workerAmount = 0;
     private int workerId;
     private String worker;
-    Worker(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
-        super(companyId, name, branchId, branch, departmentId, department);
+    Worker(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+        super(counterId, companyId, name, branchId, branch, departmentId, department);
         this.workerId = workerId;
         this.worker = worker;
     }
-    Worker(int companyId, String name, int branchId, String branch, int departmentId, String department) {
-        super(companyId, name, branchId, branch, departmentId, department);
+    Worker(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(counterId, companyId, name, branchId, branch, departmentId, department);
     }
-    Worker(int companyId, String name, int branchId, String branch) {
-        super(companyId, name, branchId, branch);
+    Worker(int counterId, int companyId, String name, int branchId, String branch) {
+        super(counterId, companyId, name, branchId, branch);
     }
-    Worker(int companyId, String name) {
-        super(companyId, name);
+    Worker(int counterId, int companyId, String name) {
+        super(counterId, companyId, name);
     }
 
     public String getWorker() {
@@ -63,7 +63,7 @@ public class Worker extends Department{
                 isDepartmentFound = true;
             }
         }
-        list.add(new Project(companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, console2.nextLine()));
     }
 
     public static void removeWorker(List<Project> list, int workerId){

@@ -6,37 +6,37 @@ public class Project extends Worker{
     public static int projectAmount = 0;
     private String project;
     private int projectId;
-    Project(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, int projectId, String project) {
-        super(companyId, name, branchId, branch, departmentId, department, workerId, worker);
+    Project(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, int projectId, String project) {
+        super(counterId, companyId, name, branchId, branch, departmentId, department, workerId, worker);
         this.project = project;
         this.projectId = projectId;
     }
-    Project(int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
-        super(companyId, name, branchId, branch, departmentId, department, workerId, worker);
+    Project(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+        super(counterId, companyId, name, branchId, branch, departmentId, department, workerId, worker);
         if(this.getProject() == null){
             //System.out.println(getWorkerId());
             IncrementWorkerId();
             //System.out.println(getWorkerId());
         }
     }
-    Project(int companyId, String name, int branchId, String branch, int departmentId, String department) {
-        super(companyId, name, branchId, branch, departmentId, department);
+    Project(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(counterId, companyId, name, branchId, branch, departmentId, department);
         if(this.getWorker() == null){
             //System.out.println(getDepartmentId());
             IncrementDepartmentId();
             //System.out.println(getDepartmentId());
         }
     }
-    Project(int companyId, String name, int branchId, String branch) {
-        super(companyId, name, branchId, branch);
+    Project(int counterId, int companyId, String name, int branchId, String branch) {
+        super(counterId, companyId, name, branchId, branch);
         if(this.getDepartment() == null){
             //System.out.println(getBranchId());
             IncrementBranchId();
             //System.out.println(getBranchId());
         }
     }
-    Project(int companyId, String name) {
-        super(companyId, name);
+    Project(int counterId, int companyId, String name) {
+        super(counterId, companyId, name);
         if(this.getBranch() == null){
             //System.out.println(getCompanyId());
             IncrementCompanyId();
@@ -75,5 +75,14 @@ public class Project extends Worker{
 
     public int getProjectId() {
         return projectId;
+    }
+
+    public static void showDataBase(List<Project> list){
+        for(int index=0; index<list.size(); index++){
+            System.out.println(list.get(index).getCounterId()+". "+(list.get(index).getName() == null?"":
+                    list.get(index).getName())+", "+(list.get(index).getBranch() == null ? "" : list.get(index).getBranch()+", ")
+                    +(list.get(index).getDepartment() == null ? "" : list.get(index).getDepartment()+", ")+
+                    (list.get(index).getWorker() == null ? "" : list.get(index).getWorker()));
+        }
     }
 }

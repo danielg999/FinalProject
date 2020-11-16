@@ -17,13 +17,13 @@ public class Main {
 //        List<Project> companies5 = new ArrayList<Project>();
 
 
-        companies.add(new Project(Company.companyAmount, "xxx"));
-        companies.add(new Project(Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
-        companies.add(new Project(Company.companyAmount, "nazwaFirmy"));
-        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
-        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
-        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
-        companies.add(new Project(Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "xxx"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
+        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId, workerId;
         Integer choice, choice2, choice3, choice4, choice5;
@@ -34,7 +34,8 @@ public class Main {
             System.out.println("3) Usuń firmę");
             System.out.println("4) Znajdź firmę po nazwie");
             System.out.println("5) Zarządzaj firmą");
-            System.out.println("6) Zakończ");
+            System.out.println("6) Pokaż wszystkie dane");
+            System.out.println("7) Zakończ");
             choice = Integer.parseInt(console.nextLine());
             switch(choice){
                 case 1:
@@ -185,10 +186,14 @@ public class Main {
 
                     break;
                 case 6:
+                    System.out.println("BAZA DANYCH");
+                    Project.showDataBase(companies);
+                    break;
+                case 7:
                     System.out.println("Do widzenia");
                     break;
             }
-        } while(!choice.equals(6));
+        } while(!choice.equals(7));
     }
 }
 //Prawdopodobnie będzie zawsze dodawanie jednego elementu z klasy (głównego), a jak usuwanie to wszystkiego
