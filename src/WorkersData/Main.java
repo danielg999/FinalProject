@@ -15,15 +15,36 @@ public class Main {
 //        List<Department> companies3 = new ArrayList<Department>();
 //        List<Worker> companies4 = new ArrayList<Worker>();
 //        List<Project> companies5 = new ArrayList<Project>();
+        System.out.print("Podaj nazwę spółki: ");
+        Partnership.setPartnerShipName(console.nextLine());
+        System.out.println("Czy ma być to spółka międzynardowa? [1 lub 2]");
+        int isInternationality = 0;
+        do{
+            System.out.println("1) TAK");
+            System.out.println("2) NIE");
+            try {
+                isInternationality = Integer.parseInt(console.nextLine());
+                switch (isInternationality) {
+                    case 1:
+                        Partnership.setInternationality(true);
+                        break;
+                    case 2:
+                        Partnership.setInternationality(false);
+                        break;
+                }
+            }
+            catch (Exception e){
+                System.out.println("Nie podano liczby całkowitej.");
+            }
+        }while(isInternationality != 1 && isInternationality != 2);
 
-
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "xxx"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
-        companies.add(new Project(General.getCounter(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "xxx"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId, workerId;
         Integer choice, choice2, choice3, choice4, choice5;

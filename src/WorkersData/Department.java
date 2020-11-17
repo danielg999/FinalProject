@@ -1,5 +1,6 @@
 package WorkersData;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,16 +10,16 @@ public class Department extends Branch{
     public static int departmentAmount = 0;
     private int departmentId;
     private String department;
-    Department(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department) {
-        super(counterId, companyId, name, branchId, branch);
+    Department(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch);
         this.departmentId = departmentId;
         this.department = department;
     }
-    Department(int counterId, int companyId, String name, int branchId, String branch) {
-        super(counterId, companyId, name, branchId, branch);
+    Department(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch);
     }
-    Department(int counterId, int companyId, String name) {
-        super(counterId, companyId, name);
+    Department(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name);
     }
 
     public String getDepartment() {
@@ -55,7 +56,7 @@ public class Department extends Branch{
                 isBranchFound = true;
             }
         }
-        list.add(new Project(General.getCounter(), companyId, company, branchId, branch, Department.departmentAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), companyId, company, branchId, branch, Department.departmentAmount, console2.nextLine()));
     }
 
     public static void removeDepartment(List<Project> list, int departmentId){

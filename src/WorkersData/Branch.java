@@ -1,5 +1,6 @@
 package WorkersData;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Branch extends Company{
@@ -7,14 +8,14 @@ public class Branch extends Company{
     private int branchId;
     private String branch;
 
-    Branch(int counterId, int companyId, String name, int branchId, String branch) {
-        super(counterId, companyId, name);
+    Branch(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name);
         this.branchId = branchId;
         this.branch = branch;
     }
 
-    Branch(int counterId, int companyId, String name) {
-        super(counterId, companyId, name);
+    Branch(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name);
     }
 
     public String getBranch() {
@@ -50,7 +51,7 @@ public class Branch extends Company{
                 break;
             }
         }
-        list.add(new Project(General.getCounter(), companyId, company, Branch.branchAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), companyId, company, Branch.branchAmount, console2.nextLine()));
     }
     public static void removeBranch(List<Project> list, int branchId){
         //list.remove(companyId);// powinny być usuwane wszystkie po nazwie

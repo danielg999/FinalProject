@@ -1,5 +1,6 @@
 package WorkersData;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,19 +10,19 @@ public class Worker extends Department{
     public static int workerAmount = 0;
     private int workerId;
     private String worker;
-    Worker(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
-        super(counterId, companyId, name, branchId, branch, departmentId, department);
+    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department);
         this.workerId = workerId;
         this.worker = worker;
     }
-    Worker(int counterId, int companyId, String name, int branchId, String branch, int departmentId, String department) {
-        super(counterId, companyId, name, branchId, branch, departmentId, department);
+    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department);
     }
-    Worker(int counterId, int companyId, String name, int branchId, String branch) {
-        super(counterId, companyId, name, branchId, branch);
+    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch);
     }
-    Worker(int counterId, int companyId, String name) {
-        super(counterId, companyId, name);
+    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name);
     }
 
     public String getWorker() {
@@ -63,7 +64,7 @@ public class Worker extends Department{
                 isDepartmentFound = true;
             }
         }
-        list.add(new Project(General.getCounter(), companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, console2.nextLine()));
+        list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, console2.nextLine()));
     }
 
     public static void removeWorker(List<Project> list, int workerId){

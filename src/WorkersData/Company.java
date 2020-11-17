@@ -1,16 +1,17 @@
 package WorkersData;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Company<T extends Comparable<T>> extends General{
+public class Company<T extends Comparable<T>> extends Partnership{
     public static int companyAmount = 0;
     private  int companyId;
     private String name;
 
-    Company(int counterId, int companyId, String name) {
-        super(counterId);
+    Company(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name) {
+        super(counterId, partnerShipName, creationDate, internationality);
         //companyAmount++;
         //this.setCompanyId();
         this.companyId = companyId;
@@ -55,7 +56,7 @@ public class Company<T extends Comparable<T>> extends General{
             if(item.getName().contains(company))
                 flag = 1;
         if(flag == 0){
-            list.add(new Project(General.getCounter(), Company.companyAmount, company));
+            list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, company));
         }
 
         else
