@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Department extends Branch{
-    public static int departmentAmount = 0;
+    private static int departmentAmount = 0;
     private int departmentId;
     private String department;
     Department(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department) {
@@ -93,6 +93,14 @@ public class Department extends Branch{
 
     public int getDepartmentId() {
         return departmentId;
+    }
+
+    public static int getDepartmentAmount() {
+        return departmentAmount;
+    }
+
+    public static void setDepartmentAmount(int departmentAmount) {
+        Department.departmentAmount = departmentAmount;
     }
 
     public void setDepartmentId(int departmentId) {

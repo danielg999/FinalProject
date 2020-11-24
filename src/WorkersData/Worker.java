@@ -1,19 +1,18 @@
 package WorkersData;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-public class Worker extends Department{
-    public static int workerAmount = 0;
+public class Worker extends Department implements PromoteWorker{
+    private static int workerAmount = 0;
     private int workerId;
     private String worker;
-    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
+    private Positions position;
+    Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, Positions position) {
         super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department);
         this.workerId = workerId;
         this.worker = worker;
+        this.position = position;
     }
     Worker(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department) {
         super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department);
@@ -64,7 +63,11 @@ public class Worker extends Department{
                 isDepartmentFound = true;
             }
         }
-        list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, console2.nextLine()));
+        System.out.print("Podaj imie i nazwisko pracownika: ");
+        String fullname = console2.nextLine();
+        System.out.print("Podaj stanowisko pracownika z dostępnych: ");
+        Positions position = Positions.valueOf(console2.nextLine());
+        list.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), companyId, company, branchId, branch, departmentId, department, Worker.workerAmount, fullname, position));
     }
 
     public static void removeWorker(List<Project> list, int workerId){
@@ -104,7 +107,34 @@ public class Worker extends Department{
         this.workerId = workerAmount;
     }
 
+        public static int getWorkerAmount() {
+        return workerAmount;
+    }
+
+    public static void setWorkerAmount(int workerAmount) {
+        Worker.workerAmount = workerAmount;
+    }
+
     public int getWorkerId() {
         return workerId;
+    }
+
+    private void showWorkerPosition(List<Project> list, int companyId, int branchId, int departmentId, int workerId){
+        for(int index=0; index<list.size(); index++){
+            if(list.get(index).getCompanyId() == companyId && list.get(index).getBranchId() == branchId && list.get(index).getDepartmentId() == departmentId && list.get(index).getWorker() != null && list.get(index).getProject() == null){
+                System.out.println(list.get(index).getWorkerId()+". "+list.get(index).getName()+", "+list.get(index).getBranch()+", "+list.get(index).getDepartment()+", "+list.get(index).getWorker());
+            }
+        }
+    }
+    @Override
+    public void PromoteWorkerPosition(int workerId) {
+        Scanner console2 = new Scanner(System.in);
+        for (Positions item: Positions.values()) {
+            System.out.println(item.ordinal()+". "+item);
+        }
+        System.out.println("Obecne stanowisko: ");
+        System.out.print("Podaj identyfikator stanowiska na które awansować pracownika: ");
+        int position = Integer.parseInt(console2.nextLine());
+
     }
 }

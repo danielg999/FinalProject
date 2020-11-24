@@ -4,16 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Project extends Worker{
-    public static int projectAmount = 0;
+    private static int projectAmount = 0;
     private String project;
     private int projectId;
-    Project(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, int projectId, String project) {
-        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department, workerId, worker);
+    Project(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, Positions position, int projectId, String project) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department, workerId, worker, position);
         this.project = project;
         this.projectId = projectId;
     }
-    Project(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker) {
-        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department, workerId, worker);
+    Project(int counterId, String partnerShipName, LocalDate creationDate, boolean internationality, int companyId, String name, int branchId, String branch, int departmentId, String department, int workerId, String worker, Positions position) {
+        super(counterId, partnerShipName, creationDate, internationality, companyId, name, branchId, branch, departmentId, department, workerId, worker, position);
         if(this.getProject() == null){
             //System.out.println(getWorkerId());
             IncrementWorkerId();
@@ -54,20 +54,20 @@ public class Project extends Worker{
     }
 
     private void IncrementCompanyId() {
-        this.setCompanyId(companyAmount+1);
+        this.setCompanyId(Company.getCompanyAmount()+1);
     }
 
     public void IncrementBranchId() {
-        this.setBranchId(branchAmount+1);
+        this.setBranchId(Branch.getBranchAmount()+1);
     }
     public void IncrementProjectId() {
         this.setProjectId(projectAmount+1);
     }
     public void IncrementWorkerId() {
-        this.setWorkerId(workerAmount+1);
+        this.setWorkerId(Worker.getWorkerAmount()+1);
     }
     public void IncrementDepartmentId() {
-        this.setDepartmentId(departmentAmount+1);
+        this.setDepartmentId(Department.getDepartmentAmount()+1);
     }
     public void setProjectId(int projectId) {
         projectAmount = projectId;
@@ -76,6 +76,14 @@ public class Project extends Worker{
 
     public int getProjectId() {
         return projectId;
+    }
+
+    public static int getProjectAmount() {
+        return projectAmount;
+    }
+
+    public static void setProjectAmount(int projectAmount) {
+        Project.projectAmount = projectAmount;
     }
 
     public static void showDataBase(List<Project> list){

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Branch extends Company{
-    public static int branchAmount = 0;
+    private static int branchAmount = 0;
     private int branchId;
     private String branch;
 
@@ -80,6 +80,14 @@ public class Branch extends Company{
     public void setBranchId(int branchId) {
         branchAmount = branchId;
         this.branchId = branchAmount;
+    }
+
+    public static int getBranchAmount() {
+        return branchAmount;
+    }
+
+    public static void setBranchAmount(int branchAmount) {
+        Branch.branchAmount = branchAmount;
     }
 
     public int getBranchId() {

@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Company<T extends Comparable<T>> extends Partnership{
-    public static int companyAmount = 0;
+    private static int companyAmount = 0;
     private  int companyId;
     private String name;
 
@@ -22,6 +22,14 @@ public class Company<T extends Comparable<T>> extends Partnership{
 
     public String getName() {
         return name;
+    }
+
+    public static int getCompanyAmount() {
+        return companyAmount;
+    }
+
+    public static void setCompanyAmount(int companyAmount) {
+        Company.companyAmount = companyAmount;
     }
 
     @Override

@@ -1,12 +1,15 @@
 package WorkersData;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
+
 
     public static void main(String[] args) throws IOException {
         Scanner console = new Scanner(System.in);
@@ -15,6 +18,11 @@ public class Main {
 //        List<Department> companies3 = new ArrayList<Department>();
 //        List<Worker> companies4 = new ArrayList<Worker>();
 //        List<Project> companies5 = new ArrayList<Project>();
+        System.out.println(Positions.seniorDeveloper.ordinal()+1);
+        System.out.println(Positions.values()[Positions.seniorDeveloper.ordinal()+1]+", ");
+        System.out.println(Positions.valueOf("seniorDeveloper").ordinal());
+        System.out.println(Positions.valueOf("seniorDeveloper").ordinal());
+        System.out.println(Arrays.stream(Positions.values()).count());
         System.out.print("Podaj nazwę spółki: ");
         Partnership.setPartnerShipName(console.nextLine());
         System.out.println("Czy ma być to spółka międzynardowa? [1 lub 2]");
@@ -38,13 +46,13 @@ public class Main {
             }
         }while(isInternationality != 1 && isInternationality != 2);
 
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "xxx"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "xxx", Branch.branchAmount, "dsd2"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik"));
-        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.companyAmount, "nazwaFirmy", Branch.branchAmount, "oddzial", Department.departmentAmount, "Dzial", Worker.workerAmount,"pracownik", Project.projectAmount, "projekt"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "xxx"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "xxx", Branch.getBranchAmount(), "dsd2"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "nazwaFirmy"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "nazwaFirmy", Branch.getBranchAmount(), "oddzial"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "nazwaFirmy", Branch.getBranchAmount(), "oddzial", Department.getDepartmentAmount(), "Dzial"));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "nazwaFirmy", Branch.getBranchAmount(), "oddzial", Department.getDepartmentAmount(), "Dzial", Worker.getWorkerAmount(),"pracownik", Positions.junior));
+        companies.add(new Project(General.getCounter(), Partnership.getPartnerShipName(), Partnership.getCreationDate(), Partnership.getInternationality(), Company.getCompanyAmount(), "nazwaFirmy", Branch.getBranchAmount(), "oddzial", Department.getDepartmentAmount(), "Dzial", Worker.getWorkerAmount(),"pracownik", Positions.seniorTester, Project.getProjectAmount(), "projekt"));
         //showCompanies(companies5);
         Integer companyId, branchId, departmentId, workerId;
         Integer choice, choice2, choice3, choice4, choice5;
